@@ -5786,7 +5786,7 @@ void wlconf_post(const char *ifname)
 	}
 #endif
 
-#ifdef RTCONFIG_BCMWL6
+#if defined(RTCONFIG_BCMWL6) && defined(RTCONFIG_WIRELESSREPEATER)
 	if (is_ure(unit))
 		eval("wl", "-i", ifname, "allmulti", "1");
 #endif
