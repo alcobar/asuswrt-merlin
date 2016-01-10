@@ -676,8 +676,8 @@ ifneq ($(RTCONFIG_4M_SFP),y)
 obj-y += netstat-nat
 endif
 
-obj-$(RTCONFIG_TCPDUMP) += libpcap
-obj-$(RTCONFIG_TCPDUMP) += tcpdump-4.4.0
+obj-$(RTCONFIG_TCPDUMP) += libpcap-1.7.4
+obj-$(RTCONFIG_TCPDUMP) += tcpdump-4.7.4
 
 # Merlin addons
 obj-n += wol
@@ -2467,39 +2467,39 @@ endif
 #		@-mkdir -p libnet/lib
 #		@$(MAKE) -C libnet CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
-libpcap/stamp-h1:
+libpcap-1.7.4/stamp-h1:
 	cd libpcap && $(CONFIGURE) --with-pcap=linux
 	touch $@
 
-libpcap: libpcap/stamp-h1
+libpcap-1.7.4: libpcap-1.7.4/stamp-h1
 	@$(SEP)
-	@$(MAKE) -C libpcap CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
+	@$(MAKE) -C libpcap-1.7.4 CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
-libpcap-install: libpcap
+libpcap-1.7.4-install: libpcap-1.7.4
 	@echo "do nothing"
 	#install -D libpcap/libpcap.so.1.4.0 $(INSTALLDIR)/libpcap/usr/lib/libpcap.so.1.4.0
 	#$(STRIP) $(INSTALLDIR)/libpcap/usr/lib/libpcap.so.1.4.0
 	#cd $(INSTALLDIR)/libpcap/usr/lib && ln -sf libpcap.so.1.4.0 libpcap.so
 
-libpcap-clean:
-	[ ! -f libpcap/Makefile ] || $(MAKE) -C libpcap clean
-	@rm -f libpcap/stamp-h1
+libpcap-1.7.4-clean:
+	[ ! -f libpcap-1.7.4/Makefile ] || $(MAKE) -C libpcap-1.7.4 clean
+	@rm -f libpcap-1.7.4/stamp-h1
 
-tcpdump-4.4.0/stamp-h1:
-	cd tcpdump-4.4.0 && $(CONFIGURE) ac_cv_linux_vers=2
+tcpdump-4.7.4/stamp-h1:
+	cd tcpdump-4.7.4 && $(CONFIGURE) ac_cv_linux_vers=2
 	touch $@
 
-tcpdump-4.4.0:  libpcap tcpdump-4.4.0/stamp-h1
+tcpdump-4.7.4:  libpcap-1.7.4 tcpdump-4.7.4/stamp-h1
 	@$(SEP)
-	@$(MAKE) -C tcpdump-4.4.0 CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
+	@$(MAKE) -C tcpdump-4.7.4 CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
-tcpdump-4.4.0-install: tcpdump-4.4.0
-	install -D tcpdump-4.4.0/tcpdump $(INSTALLDIR)/tcpdump-4.4.0/usr/sbin/tcpdump
-	$(STRIP) $(INSTALLDIR)/tcpdump-4.4.0/usr/sbin/tcpdump
+tcpdump-4.7.4-install: tcpdump-4.7.4
+	install -D tcpdump-4.7.4/tcpdump $(INSTALLDIR)/tcpdump-4.7.4/usr/sbin/tcpdump
+	$(STRIP) $(INSTALLDIR)/tcpdump-4.7.4/usr/sbin/tcpdump
 
-tcpdump-4.4.0-clean:
-	[ ! -f tcpdump-4.4.0/Makefile ] || $(MAKE) -C tcpdump-4.4.0 clean
-	@rm -f tcpdump-4.4.0/stamp-h1
+tcpdump-4.7.4-clean:
+	[ ! -f tcpdump-4.7.4/Makefile ] || $(MAKE) -C tcpdump-4.7.4 clean
+	@rm -f tcpdump-4.7.4/stamp-h1
 
 libqcsapi_client-install: libqcsapi_client
 	install -d $(INSTALLDIR)/libqcsapi_client/usr/lib/
