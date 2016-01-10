@@ -82,16 +82,6 @@ extern const char *rt_swpjverno;
 #define ASUS_STOP_COMMIT	"asus_stop_commit"
 #define LED_CTRL_HIPRIO 	"LED_CTRL_HIPRIO"
 
-#ifdef RTCONFIG_IPV6
-enum {
-	IPV6_DISABLED = 0,
-	IPV6_NATIVE_DHCP,
-	IPV6_6TO4,
-	IPV6_6IN4,
-	IPV6_6RD,
-	IPV6_MANUAL
-};
-
 #ifndef RTF_UP
 /* Keep this in sync with /usr/src/linux/include/linux/route.h */
 #define RTF_UP		0x0001  /* route usable			*/
@@ -106,6 +96,17 @@ enum {
 #define	RTF_ADDRCONF	0x00040000	/* addrconf route - RA		*/
 #define	RTF_CACHE	0x01000000	/* cache entry			*/
 #endif
+
+#ifdef RTCONFIG_IPV6
+enum {
+        IPV6_DISABLED = 0,
+        IPV6_NATIVE_DHCP,
+        IPV6_6TO4,
+        IPV6_6IN4,
+        IPV6_6RD,
+        IPV6_MANUAL
+};
+
 #define IPV6_MASK (RTF_GATEWAY|RTF_HOST|RTF_DEFAULT|RTF_ADDRCONF|RTF_CACHE)
 #endif
 
