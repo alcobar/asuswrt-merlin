@@ -2454,7 +2454,7 @@ endif
 #		@$(MAKE) -C libnet CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
 libpcap-1.7.4/stamp-h1:
-	cd libpcap && $(CONFIGURE) --with-pcap=linux
+	cd libpcap-1.7.4 && $(CONFIGURE) --with-pcap=linux
 	touch $@
 
 libpcap-1.7.4: libpcap-1.7.4/stamp-h1
